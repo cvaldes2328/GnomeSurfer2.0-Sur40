@@ -1,0 +1,74 @@
+
+NM_006987
+Observational study of gene-disease association. (HuGE Navigator)
+Noc2 may function as a Rab3B effector protein in epithelial cells.
+Mutations of rabphillin-3A-like gene is associated with colorectal cancers
+This line signifies end of publication list for this gene
+
+NM_001013672
+Publications not available
+This line signifies end of publication list for this gene
+
+NM_182705
+Publications not available
+This line signifies end of publication list for this gene
+
+NM_001128159
+Missorting of cathepsin D in GARP-depleted cells results from accumulation of recycling MPRs in a population of light, small vesicles downstream of endosomes.
+Data show that transcription of the putative tumor suppressor gene HCCS1 requires binding of ETS-2 to its consensus near the transcription start site; observations provide insight into the mechanistic aspects of HCCS1 transcription regulation
+Amphipathic tail-anchoring peptide (ATAP) targets specifically to mitochondria, and induces caspase-dependent apoptosis that does not require Bax or Bak.
+Golgi associated retrograde protein complex, consisting of the Vps52, Vps53, and Vps54 proteins, shows significant conservation between various species but diversification and specialization result in important differences in human cells.
+This line signifies end of publication list for this gene
+
+NM_024792
+Molecular cloning and characterization of this novel membrane-associated gene involved in amino acid transport and glutathione metabolism
+CT120B overexpression resulted in reduction of cell growth rate &amp; inhibited tumorigenecity &amp; anchorage-independent growth; findings suggest that the delayed G1/S phase transition might contribute to the inhibitory activities of CT120B on cell growth
+This line signifies end of publication list for this gene
+
+NM_015721
+Observational study of gene-disease association. (HuGE Navigator)
+A canonical nuclear import sequence in the N-terminus of Gemin4 was identified.
+Gemin3 and Gemin4 function in Sm core assembly and correlate the activity of this pathway with Spinal Muscular Atrophy.
+zinc-finger proteins were identified as HCAP1-interacting proteins
+A haplotype of HCAP1 with minor alleles at 5 single nucleotide polymorphisms may be related to cancer susceptibility: its expression causes up-regulation of genes involved in cell growth and down-regulation of genes involved in apoptosis and DNA repair.
+This line signifies end of publication list for this gene
+
+NR_024120
+Publications not available
+This line signifies end of publication list for this gene
+
+NM_001126114
+p53 hot spots, proximal and distal colon tumors were more similar to each other than distal colon and rectal tumors
+UVA-induced apoptosis is caused by extensive oxidative damage leading to p53-regulated mitochondrial release, whereas UVB induces DNA damage and apoptosis signaling upstream of lysosomal membrane permeabilization
+analysis of functional TP53 in nasopharyngeal carcinoma
+gain-of-function p53 mutant acquires the de novo ability to stimulate Gal-3 expression and to increase chemoresistance in anaplastic thyroid carcinomas
+TP53 Arg72Pro associated with the increased risk of sporadic papillary thyroid carcinoma.
+The majority of the cases of Adenosquamous carcinoma of the pancreas had strong nuclear p53 positivity
+Gastric cancer patients who had low FBXW7 expression levels and p53 mutation had a distinctively poor prognosis in comparison with other subgroups.
+describes a third abnormal response pattern characterized by failure of p21 protein accumulation despite a normal p53 protein response
+JFK promotes p53 turnover through assembly of an SCF (Skp1-Cul1-F-box) complex, revealing a pathway for the control of p53 degradation and providing a link between the SCF complex and p53 regulation.
+results also provide a plausible explanation for the evolutionary positive selection of some alleles in the p53 pathway and demonstrate the alleles in the p53 pathway as a good example of antagonistic pleiotropy
+Results suggest that prevalent haplotypes within the TP53 gene may modulate CRC risks in the population.
+None of the inverted papillomas exhibited mutations in TP53
+Suggest a synergistic effect between smoking and TP53 genetic polymorphisms on lung cancer risk compared with each risk factor alone.
+p53 regulates angiogenesis in low-grade astrocytomas
+Increased risk of head and neck cancer among individuals with combined p73 exon 2 G4A and p53 intron 3 variant alleles and a protective effect for those carrying the p53 exon 4-p53 intron 6 diplotype combination.
+This line signifies end of publication list for this gene
+
+NM_022463
+Observational study of gene-disease association. (HuGE Navigator)
+Nucleoredoxin is a novel thioredoxin family member involved in cell growth and differentiation [review]
+This line signifies end of publication list for this gene
+
+NM_018081
+We have identified a natural antisense transcript of p53, designated Wrap53, that regulates endogenous p53 mRNA levels and further induction of p53 protein by targeting the 5' untranslated region of p53 mRNA.
+identification of telomerase holoenzyme subunit, TCAB1, enriched in Cajal bodies; it associates with active telomerase, telomerase components & small Cajal body RNAs; TCAB1 controls telomerase trafficking & required for telomere synthesis in cancer cells
+Observational study of gene-disease association and gene-environment interaction. (HuGE Navigator)
+Observational study of gene-disease association. (HuGE Navigator)
+Common variation in TP53 or WDR79 could be associated with ER negative breast cancers.
+This line signifies end of publication list for this gene
+
+NM_032356
+Publications not available
+This line signifies end of publication list for this gene
+

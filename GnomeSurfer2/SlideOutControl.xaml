@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="GnomeSurfer2.SlideOutControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="{Binding Path=Content.Width}">
+    
+    <StackPanel Orientation="Horizontal" Height="auto" Width="auto">
+        <Border BorderThickness="0" x:Name="_mainPanel" Background="White"/>
+        <UserControl BorderThickness="0" x:Name="_sidePanel" Background="White"/>
+    </StackPanel>
+</UserControl>

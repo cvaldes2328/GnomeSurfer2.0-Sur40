@@ -1,0 +1,7 @@
+﻿<s:TagVisualization x:Class="GnomeSurfer2.BlastTag"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    Loaded="BlastTag_Loaded">
+    <!--<Ellipse Width="100" Height="100" Fill="Transparent" Stroke="White" StrokeThickness="3" Opacity=".6"/>-->
+</s:TagVisualization>

@@ -1,0 +1,284 @@
+﻿<s:SurfaceWindow x:Class="GnomeSurfer2.SurfaceWindow1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+                 xmlns:local="clr-namespace:GnomeSurfer2"
+    Title="GnomeSurfer2"
+    >
+    <!-- All templates are here @ C. Grevet -->
+    <s:SurfaceWindow.Resources>
+        <ResourceDictionary Source="templates.xaml"/>
+    </s:SurfaceWindow.Resources>
+
+    <!-- 
+        Base layer of the UI. A ScatterView was used due to its properties and methods for contact recognition, and is a temporary
+        solution for maintaining a log of all contacts to the Surface while the G-nome Surfer is running. @ M. Strait
+        -->
+    <s:ScatterView Width="1024" Height="800" Background="Transparent">
+        <!-- 
+            Only ScatterViewItems may be placed on a ScatterView, so we encapsulate all layers and objects within this SVI, mainSVI.
+            Since we want the SVI to act as a 'canvas' we disabled the following properties to avoid any response from the SVI to
+            contact events.
+            -->
+        <s:ScatterViewItem Name="MainSVI" Width="1024" Height="800" Background="Transparent" Center="512,400"
+                           CanMove="False" CanRotate="False" CanScale="False" ShowsActivationEffects="False"
+                           TouchDown="MainSVI_TouchDown">
+
+            <!-- Main Canvas -->
+            <Canvas Background="{StaticResource WindowBackground}" Name="Main">
+
+                <!-- Tag definitions -->
+                <s:TagVisualizer Name="tagVis" Width="1024" Height="800" 
+                         VisualizationAdded="VisualizationAdded"
+                         PreviewVisualizationRemoved="PreviewVisualizationRemoved"
+                         PreviewVisualizationMoved="PreviewVisualizationMoved">
+                    <s:TagVisualizer.Definitions>
+                        <!--system-->
+                        <s:TagVisualizationDefinition x:Name="SysAdmin" Value="22" TagRemovedBehavior="Disappear" Source="Tag.xaml" />
+                        <!--blast-->
+                        <s:TagVisualizationDefinition x:Name="BlastTag" Value="176" TagRemovedBehavior="Disappear" Source="BlastTag.xaml" />
+                        <!--eraser-->
+                        <s:TagVisualizationDefinition x:Name="EraserTag" Value="0" TagRemovedBehavior="Disappear" Source="Tag.xaml" />
+                        <!--gene tube-->
+                        <s:TagVisualizationDefinition x:Name="TubeTag" Value="83" TagRemovedBehavior="Disappear" Source="TubeTag.xaml" />
+                        <!--printer-->
+                        <s:TagVisualizationDefinition x:Name="PrintTag" Value="2" TagRemovedBehavior="Disappear" Source="PrintTag.xaml" />
+                        <!--trash-->
+                        <s:TagVisualizationDefinition x:Name="TrashTag" Value="1" TagRemovedBehavior="Disappear" Source="Tag.xaml" />
+                    </s:TagVisualizer.Definitions>
+                </s:TagVisualizer>
+
+                <s:ScatterView Name="ChromSV" Width="1024" Height="240" Background="Transparent" Visibility="Collapsed"
+                       
+                       TouchUp="ChromSV_TouchUp">
+                    <s:ScatterViewItem Name="ChromSVI" Width="1024" Height="240" Background="Transparent" Center="512,120"
+                               CanMove="False" CanRotate="False" CanScale="False" ShowsActivationEffects="False">
+                        <!-- Canvas that contains the context polygon -->
+                        <Canvas Name="polyLayer" Background="transparent">
+
+                            <!-- Gene view -->
+                            <s:SurfaceScrollViewer Name="chrviewer" Background="Gray" Canvas.Top="50" Height="240" Width="1024" Visibility="Hidden" 
+                               HorizontalScrollBarVisibility="Visible" 
+                               VerticalScrollBarVisibility="Disabled"
+                               TouchUp="topGene_TouchUp"
+                               ScrollChanged="chrviewer_ScrollChanged">
+
+                                <Canvas Name="GeneGrid" Height="200" Background="{StaticResource geneView}">
+
+                                    <!-- This scatterview contains the GeneItems-->
+                                    <s:ScatterView Name="topGene"
+                               Canvas.Top="0" Height="200"
+                               TouchMove="topGene_TouchMove"
+                               TouchDown="topGene_TouchDown"
+                               TouchUp="topGene_TouchUp" />
+
+                                    <StackPanel Name="legend"
+                            Canvas.Top="70" 
+                            Orientation="Horizontal"/>
+
+                                    <!-- This canvas contains the element menu for the GeneItem that appear when a geneItem is pressed -->
+                                    <Canvas Name="MenuCanvas" Canvas.Top="0" 
+                            Background="Transparent" 
+                            Width="1024"
+                            Visibility="Visible">
+                                    </Canvas>
+                                </Canvas>
+                            </s:SurfaceScrollViewer>
+                        </Canvas>
+                    </s:ScatterViewItem>
+                </s:ScatterView>
+
+                <!-- Exon and intron view -->
+                <Canvas Background="Transparent" Name="ExonMenu" Visibility="Visible">
+                    <!-- This scatterview contains a printExonintron when a gene is selected-->
+                    <s:ScatterView  Name="ExonScatter" Width="1024" Height="768" />
+                </Canvas>
+
+                <!-- The Ink Canvas of the Base view-->
+                <s:SurfaceScrollViewer Grid.Row="0" 
+                               Name="Bases"
+                               AllowDrop="True"
+                               s:SurfaceDragDrop.DragEnter="BasesBox_DragEnter"
+                               s:SurfaceDragDrop.DragLeave="BasesBox_DragLeave"
+                               s:SurfaceDragDrop.Drop="BasesBox_Drop"/>
+
+                <!-- Menu and other ScatterViewItems-->
+                <s:ScatterView Name="MainSV" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="1024" Height="800">
+
+                    <!-- Selection Menu -->
+                    <s:ScatterViewItem Name="searchmenu" Background="Black" Opacity="0.6" Width="525" Height="300"
+                               Center="512,334" CanScale="False" Orientation="0" Visibility="Visible"
+                               ContainerManipulationCompleted="searchmenu_TouchUp"
+                               >
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80" />
+                                <!--1 genome-->
+                                <RowDefinition Height="15" />
+                                <!--2-->
+                                <RowDefinition Height="50" />
+                                <!--3 gene text field-->
+                                <RowDefinition Height="5" />
+                                <!--4-->
+                                <RowDefinition Height="5" />
+                                <!--5-->
+                                <RowDefinition Height="5" />
+                                <!--6-->
+                                <RowDefinition Height="5" />
+                                <!--7-->
+                                <RowDefinition Height="5" />
+                                <!--8-->
+                                <RowDefinition Height="50" />
+                                <!--9 search button-->
+                                <RowDefinition Height="10" />
+                                <!--10 separator-->
+                                <RowDefinition Height="35" />
+                                <!--11 gene label-->
+                                <RowDefinition Height="*" />
+                                <!--12-->
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="20"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Name="sm_genome" VerticalAlignment="Center" Content="genome:" FontSize="18" Foreground="White"/>
+
+                            <s:ScatterView Grid.Row="0" Grid.Column="1">
+                                <s:ScatterViewItem Height="75" Width="75" Name="Mouse" Background="Black" BorderThickness="5" CanMove="False" CanRotate="False"
+                                               TouchDown="OrgSelect_TouchDown">
+                                    <Image Source="Resources\org_mouse.jpg"/>
+                                </s:ScatterViewItem>
+                            </s:ScatterView>
+                            <s:ScatterView Grid.Row="0" Grid.Column="3">
+                                <s:ScatterViewItem Height="75" Width="75" Name="Human" Background="Black" BorderBrush="DodgerBlue" BorderThickness="5" CanMove="False" 
+                                               CanRotate="False"  
+                                               TouchDown="OrgSelect_TouchDown">
+                                    <Image Source="Resources\org_human.jpg"/>
+                                </s:ScatterViewItem>
+                            </s:ScatterView>
+                            <!--<s:ScatterView Grid.Column="3" Grid.Row="0">
+                        <s:ScatterViewItem Name="Rat" Background="Black" BorderThickness="5" CanMove="False" CanRotate="False"
+                                               TouchDown="OrgSelect_TouchDown">
+                            <Image Source="Resources\org_rat.jpg"/>
+                        </s:ScatterViewItem>
+                    </s:ScatterView>-->
+
+                            <Label Grid.Row="2" Grid.Column="0" Content="gene:" FontSize="18" Foreground="White"/>
+                            <s:SurfaceTextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Background="Gray" FontSize="18" Name="geneName" PreviewKeyUp="geneName_PreviewKeyUp"/>
+
+                            <!--<Label Grid.Row="4" Grid.Column="0" Name="sm_chromosome" Content="chromosome:" FontSize="12.5" Foreground="White"/>
+                    <s:SurfaceSlider Name="sm_slider" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Aqua"
+                                     Minimum="1" Maximum="22" TickFrequency="1" Value="1"
+                                     TickPlacement="None" IsSnapToTickEnabled="True"
+                                     SnappedValueChanged="sm_chromosome_SnappedValueChanged"/>
+                            <TickBar Name="chromosomeTickbar" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Fill="White" 
+                             Minimum="1" Maximum="22" TickFrequency="1" Height="4" ReservedSpace="30"/>
+
+                            <Label Grid.Row="6" Grid.Column="0" Content="region:" FontSize="12.5" Foreground="White"/>
+                            <s:SurfaceSlider Name="region_slider" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Foreground="Aqua"
+                                     Minimum="1" Maximum="22" TickFrequency="1" Value="1"
+                                     TickPlacement="None" IsSnapToTickEnabled="True"
+                                     SnappedValueChanged="sm_chromosome_SnappedValueChanged"/>
+                            <TickBar Name="region_tickbar" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" Fill="White" 
+                             Minimum="1" Maximum="22" TickFrequency="1" Height="4" ReservedSpace="30"/>-->
+
+                            <s:SurfaceButton Grid.Row="8" Grid.Column="2" Content="search" FontSize="18" Foreground="White" TouchUp="SearchButton_TouchUp"/>
+                            <Separator Grid.Row="10" Grid.ColumnSpan="5" Height="5" Opacity="0.5"/>
+                            <Label Grid.Row="11" Grid.ColumnSpan="4" Content="Human, Chromosome 1" Name="menuLabel" FontSize="15" Foreground="DodgerBlue" />
+                            <Label Grid.Row="11" Grid.Column="2" Grid.ColumnSpan="2" Content="alert: Gene not found" 
+                           FontSize="15" Foreground="Red" Name="GeneNotFoundAlert" Visibility="Hidden" />
+                        </Grid>
+                    </s:ScatterViewItem>
+                </s:ScatterView>
+
+                <Canvas Name="trash" Width="1024" Height="800" Visibility="Hidden" Background="Black" Opacity=".75">
+                    <s:ScatterView Name="trashSVIs" Width="1024" Height="800" Visibility="Visible">
+                        <Label Content="Trash"  FontSize="50" Background="Black" Opacity=".25" Foreground="Gray"/>
+                    </s:ScatterView>
+                </Canvas>
+
+                <Canvas Name="BlastResults" Width="1024" Height="800" Visibility="Hidden">
+                    <Canvas Background="Black" Opacity="0.75" Width="1024" Height="800"/>
+                    <!-- Tags -->
+                    <s:TagVisualizer Name="tagVis2" Width="1024" Height="800" 
+                         PreviewVisualizationInitialized="VisualizationAdded"
+                         PreviewVisualizationRemoved="PreviewVisualizationRemoved">
+                        <s:TagVisualizer.Definitions>
+                            <!--00 Eraser tag-->
+                            <s:TagVisualizationDefinition x:Name="tag_eraser2" Value="0" TagRemovedBehavior="Disappear" Source="BlastTag.xaml" />
+                        </s:TagVisualizer.Definitions>
+                    </s:TagVisualizer>
+                    <s:ScatterView Name="results" Width="1024" Height="800" Visibility="Visible">
+                        <s:ScatterViewItem Name="seqSVI" Visibility="Visible" Width="1024" Height="50" Center="512,745"
+                                   Background="DodgerBlue" CanMove="False" CanRotate="False" CanScale="False"
+                                   Opacity=".25" TouchDown="seqSVI_TouchDown">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="45"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="Resources\org_human.jpg" Grid.Row="1" Grid.Column="1"/>
+                                <Label Name ="currSeqLabel" Grid.Row="1" Grid.Column="2"/>
+                            </Grid>
+                        </s:ScatterViewItem>
+
+
+                        <s:ScatterViewItem Name="dogSVI" Visibility="Hidden" Width="250" Height="250" CanScale="False">
+                            <s:ScatterView Name="dogRes" Background="Black" Opacity="1"/>
+                        </s:ScatterViewItem>
+
+                        <s:ScatterViewItem Name="flySVI" Visibility="Hidden" Width="250" Height="250" CanScale="False">
+                            <s:ScatterView Name="flyRes" Background="Black" Opacity="1"/>
+                        </s:ScatterViewItem>
+
+                        <s:ScatterViewItem Name="humanSVI" Visibility="Hidden" Width="250" Height="250" CanScale="False">
+                            <s:ScatterView Name="humanRes" Background="Black" Opacity="1"/>
+                        </s:ScatterViewItem>
+
+                        <s:ScatterViewItem Name="monkeySVI" Visibility="Hidden" Width="250" Height="250" CanScale="False">
+                            <s:ScatterView Name="monkeyRes" Background="Black" Opacity="1"/>
+                        </s:ScatterViewItem>
+
+                        <s:ScatterViewItem Name="mouseSVI" Visibility="Hidden" Width="250" Height="250" CanScale="False">
+                            <s:ScatterView Name="mouseRes" Background="Black" Opacity="1"/>
+                        </s:ScatterViewItem>
+
+                        <s:ScatterViewItem Name="ratSVI" Visibility="Hidden" Width="250" Height="250" CanScale="False">
+                            <s:ScatterView Name="ratRes" Background="Black" Opacity="1"/>
+                        </s:ScatterViewItem>
+                    </s:ScatterView>
+                    <s:ElementMenu Name="blastMenu"  Visibility="Hidden" Width="60" Height="50" IsSubmenuOpen="True"
+                                        s:ElementMenu.SubmenuClosed="ElementMenu_SubmenuClosed"
+                                       ActivationMode="AlwaysActive"
+                                       Background="Transparent" 
+                                       ActivationHost="{Binding ElementName=ExonMenu}" 
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Top" Focusable="True">
+                        <s:ElementMenu.RenderTransform>
+                            <TranslateTransform X="712" Y="600"/>
+                        </s:ElementMenu.RenderTransform>
+                        <s:ElementMenuItem Header="dog" s:ElementMenuItem.Click="ElementMenuItem_Click"/>
+                        <s:ElementMenuItem Header="fish" s:ElementMenuItem.Click="ElementMenuItem_Click"/>
+                        <s:ElementMenuItem Header="human" s:ElementMenuItem.Click="ElementMenuItem_Click"/>
+                        <s:ElementMenuItem Header="mouse" s:ElementMenuItem.Click="ElementMenuItem_Click"/>
+                        <s:ElementMenuItem Header="rat" s:ElementMenuItem.Click="ElementMenuItem_Click" />
+                    </s:ElementMenu>
+                </Canvas>
+
+                <Grid Width="{Binding ElementName=Main, Path=ActualWidth}" Visibility="Collapsed" 
+              Height="{Binding ElementName=Main, Path=ActualHeight}" Name="ProgressIndicator">
+                    <local:CircularProgressIndicator VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Grid>
+            </Canvas>
+        </s:ScatterViewItem>
+    </s:ScatterView>
+</s:SurfaceWindow>

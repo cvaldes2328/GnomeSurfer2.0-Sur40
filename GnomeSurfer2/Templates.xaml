@@ -1,0 +1,128 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="http://schemas.microsoft.com/surface/2008">
+
+    <ImageBrush x:Key="WindowBackground" Stretch="None" Opacity="1" ImageSource="pack://application:,,,/Resources/WindowBackground2.jpg"/>
+    <ImageBrush x:Key="geneView" Opacity="1" Stretch="Fill" ImageSource="pack://application:,,,/Resources/basebg.png"/>
+    <!--<ImageBrush x:Key="ExonView" Stretch="Fill" ImageSource="pack://application:,,,/Resources/exbg.png"/>-->
+
+    
+    <!--
+    COMMENTS ABOUT TEMPLATE FILE
+    Author: Catherine Grevet
+    We started the gene view (container of genes) as a surfacescrollviewer with a surfacelistbox and had 
+    drag-and-drop genes contained in the surfacelistbox. To do that, we followed the drag-and-drop example in 
+    the surface documentation which used templates to bind the surfacelistbox items to a certain style. The items
+    were contained in a DataItem collection. 
+    Because we made each gene as a scatterview item, we no longer need this code but leave it commented out
+    for future reference.
+    -->
+    
+    <!-- SurfaceListBoxItemDataTemplate-->
+    <!--<DataTemplate x:Key="SurfaceListBoxItemDataTemplate">
+        <StackPanel 
+            Orientation="Horizontal" 
+                        Width="{Binding Wd}" 
+                        Height="{Binding ScatterHeight}" 
+                        Margin="-10px">
+
+            <s:ScatterViewItem Width="{Binding Wd}" 
+                                   Height="{Binding ScatterHeight}"
+                                   Margin="2" 
+                                   Name="me1"
+                                   VerticalAlignment="Bottom">
+                <Grid>
+                    <Image Source="{Binding Src}" 
+                               Stretch="Fill" 
+                               Width="{Binding Wd}" 
+                               Height="{Binding Ht}" 
+                               VerticalAlignment="Bottom"/>
+                </Grid>
+            </s:ScatterViewItem>
+        </StackPanel>
+    </DataTemplate>-->
+
+    <!-- ExonIntronItemDataTemplate-->
+    <!--<DataTemplate x:Key="ExonIntronItemDataTemplate">
+        <StackPanel Orientation="Horizontal" Width="{Binding Wd}"  Height="{Binding Ht}">
+            <Image Source="{Binding Src}" Stretch="Fill" Width="{Binding Wd}" Height="{Binding Ht}"/>
+        </StackPanel>
+    </DataTemplate>-->
+
+    <!-- Exon/Intron template -->
+    <!--<DataTemplate x:Key="ExintListBoxTemplate">
+        <StackPanel Orientation="Horizontal" Height="200" />
+    </DataTemplate>-->
+
+    <!-- Chromosome ListBox Style -->
+    <!--<Style x:Key="Chromosome" TargetType="{x:Type s:SurfaceListBox }">
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="Height" Value="{Binding ScatterHeight}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <s:SurfaceScrollViewer Background="{TemplateBinding Background}"
+                                               VerticalScrollBarVisibility="Disabled"
+                                               HorizontalScrollBarVisibility="Hidden" 
+                                               CanContentScroll="True">
+                        <StackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                    </s:SurfaceScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <!-- ExInt ListBox Style -->
+    <!--<Style x:Key="ExintStyle" TargetType="{x:Type s:SurfaceListBox }">
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <s:SurfaceScrollViewer Background="{TemplateBinding Background}" 
+                                               VerticalScrollBarVisibility="Disabled"
+                                               HorizontalScrollBarVisibility="Disabled"
+                                               CanContentScroll="True">
+                        <StackPanel IsItemsHost="True" Orientation="Horizontal" MinWidth="5"/>
+                    </s:SurfaceScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <!-- Bases Style -->
+    <!--<Style x:Key="BasesStyle" TargetType="{x:Type s:SurfaceListBox}">
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <s:SurfaceScrollViewer Background="{TemplateBinding Background}" 
+                                               VerticalScrollBarVisibility="Disabled"
+                                               HorizontalScrollBarVisibility="Disabled"
+                                               CanContentScroll="True">
+                        <StackPanel IsItemsHost="True" Orientation="Vertical"/>
+                    </s:SurfaceScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <!--<Style x:Key="BasesCanvas" TargetType="{x:Type s:ElementMenuItem }">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <s:ScatterViewItem>
+                        <Canvas>
+                            <Image Width="100" Height="100" Source="Resources/bases.jpg"/>
+                            <s:SurfaceInkCanvas UsesContactShape="False" Width="100" Height="100" IsHitTestVisible="True" Background="Transparent"/>
+                        </Canvas>
+                    </s:ScatterViewItem>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+</ResourceDictionary>

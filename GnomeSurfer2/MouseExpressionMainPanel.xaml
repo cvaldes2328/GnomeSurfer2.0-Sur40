@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="GnomeSurfer2.MouseExpressionMainPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="http://schemas.microsoft.com/surface/2008"
+    Background="White">
+    <StackPanel Orientation="Vertical" Height="300">
+        <Label FontSize="20" x:Name="GeneNameLabel" />
+        <Image Source="Resources/Mouse.png" Height="200" Margin="40 0 40 0" />
+        <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+            <s:ScatterViewItem Style="{DynamicResource ScatterViewItemNoShadow}" 
+                               Background="Transparent"
+                               x:Name="AllTissuesContact">
+                <s:ElementMenuItem Header="Mouse" FontSize="16" />
+            </s:ScatterViewItem>
+        </StackPanel>
+        <s:ScatterView>
+            
+            <!-- Head -->
+            <s:ScatterViewItem Background="Transparent" Center="250,-145" 
+                               Orientation="0" Style="{DynamicResource ScatterViewItemNoShadow}"
+                               x:Name="HeadContact">
+                <s:ElementMenuItem />
+            </s:ScatterViewItem>
+            
+            <!-- Limb -->
+            <s:ScatterViewItem Background="Transparent" Center="240,-100" 
+                               Orientation="0" Style="{DynamicResource ScatterViewItemNoShadow}"
+                               x:Name="LimbContact">
+                <s:ElementMenuItem />
+            </s:ScatterViewItem>
+            
+            <!-- Chest -->
+            <s:ScatterViewItem Background="Transparent" Center="190,-140" 
+                               Orientation="0" Style="{DynamicResource ScatterViewItemNoShadow}"
+                               x:Name="ChestContact">
+                <s:ElementMenuItem />
+            </s:ScatterViewItem>
+            
+            <!-- Gut -->
+            <s:ScatterViewItem Background="Transparent" Center="130,-170" 
+                               Orientation="0" Style="{DynamicResource ScatterViewItemNoShadow}"
+                               x:Name="GutContact">
+                <s:ElementMenuItem />
+            </s:ScatterViewItem>
+
+            <!-- Germ -->
+            <s:ScatterViewItem Background="Transparent" Center="110,-130" 
+                               Orientation="0" Style="{DynamicResource ScatterViewItemNoShadow}"
+                               x:Name="GermContact">
+                <s:ElementMenuItem />
+            </s:ScatterViewItem>
+
+            <!-- Lymph -->
+            <s:ScatterViewItem Background="Transparent" Center="200,-190" 
+                               Orientation="0" Style="{DynamicResource ScatterViewItemNoShadow}"
+                               x:Name="LymphContact">
+                <s:ElementMenuItem />
+            </s:ScatterViewItem>
+            
+        </s:ScatterView>
+    </StackPanel>
+</UserControl>
