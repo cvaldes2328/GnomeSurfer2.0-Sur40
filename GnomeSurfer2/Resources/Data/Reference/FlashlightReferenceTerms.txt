@@ -1,0 +1,31 @@
+allele	Alternative versions of a gene that produce distinguishable phenotypic effects.	gene	phenotype	 
+amino acid	An organic molecule possessing both carboxyl and amino groups; serves as the monomers of proteins.	protein	DNA	RNA
+amplification	The production of many DNA copies from one or a few copies or fragments.	DNA	mutation	 
+base pairs	two complementary, nitrogen-rich molecules held together by weak chemical bonds. Two strands of DNA are held together in the shape of a double helix by the bonds between their base pairs.	DNA	RNA	 
+BLAST	The Basic Local Alignment Search Tool(BLAST) finds regions of local similarity between sequences by comparing nucleotide or protein sequences to sequence databases; BLAST can be used to infer functional and evolutionary relationships between sequences as well as help identify members of gene families.	protein	gene	base pairs
+chromosome	A threadlike, gene-carrying structure found in the nucleus. Each chromosome consists of one very long DNA molecule and associated proteins.	gene	DNA	protein
+codon	A three-nucleotide sequence of DNA or mRNA that specifies a particular amino acid or termination signal; the basis unit of the genetic code.	start codon	stop codon	amino acid
+start codon	The codon AUG, which codes for the amino acid methionine, also signals the location on mRNA molecule where protein synthesis should start.	codon	RNA	protein
+stop codon	the codons UAA, UAG, UGA, also known as termination codons; signals completion of protein and terminates the translation process.	codon	protein	 
+genotype	The genetic makeup or set of alleles of an organism.	allele	phenotype	 
+Mendelian genetics	A set of primary tenets relating to the transmission of hereditary characteristics from parent organisms to their offspring.	heterozygous	homozygous	dominant
+dominant	Referring to an allele that determines the phenotype of a heterozygous individual.	allele	phenotype	heterozygous
+heterozygous	Having two different alleles for a given gene.	allele	gene	homozygous
+homozygous	Having two identical alleles for a given gene.	allele	gene	heterozygous
+recessive	Referring to an allele whose phenotypic effect is observed only in homozygous individuals.	allele	phenotype	homozygous
+mutation	A change in the DNA of a gene, ultimately creating genetic diversity.	DNA	gene	 
+deletion	A mutational loss of one or more nucleotide pairs from a gene.	mutation	base pairs	gene
+insertion	A mutational gain of one or more nucleotide pairs from a gene.	mutation	base pairs	gene
+point mutation	A change in a gene at a single nucleotide pair.	gene	base pairs	mutation
+phenotype	The physical and physiological traits of an organism, which are determined by its genetic makeup.	genotype	 	 
+protein	A three-dimensional biological polymer constructed from a set of 20 different monomers called amino acids.	amino acid	DNA	RNA
+DNA	A double-stranded, helical nucleic acid molecule capable of replicating and determining the inherited structure of a cell's protein.	protein	RNA	amino acid
+RNA	A type of nucleic acid consisting of nucleotide monomers with a ribose sugar and the nitrogenous bases adenine (A), cytosine (C), guanine (G), and uracil(U); usually single-stranded; functions in protein synthesis and as the genome of some viruses.	base pairs	DNA	protein
+transcription	The synthesis of RNA on a DNA template.	RNA	DNA	
+translation	The synthesis of a polypeptide using the genetic information encoded in an mRNA molecule. There is a change of "language" from nucleotides to amino acids.	RNA	amino acid	 
+Genetic code	consisting of 64 triplets of nucleotides(codons), the genetic code is the set of rules by which information encoded in DNA or RNA sequences is translated into proteins by living cells.	codon	translation	DNA
+transcription factor	A regulatory protein that binds to DNA and stimulates transcription of specific genes.	protein	DNA	transcription
+gene	A discrete unit of hereditary information consisting of a specific nucleotide sequence in DNA(or RNA, in some viruses).	DNA	RNA	 
+exon	A coding region of a eukaryotic gene. Exons, which are expressed, are separated from each other by introns.	gene	intron	 
+intron	A noncoding, intervening sequence within a eukaryotic gene.	gene	exon	 
+gene expression data	Produced by a DNA microarray hybridization experiment, each gene expression data point represents the ratio of expression levels of a particular gene under two different experimental conditions.	DNA	gene	 
